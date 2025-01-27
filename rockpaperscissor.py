@@ -20,15 +20,19 @@ def bot_choice():
     return bot_ch
 
 def win_check(b_ch, u_ch):
-    if b_ch == u_ch:
-        return 'Tie'
-    elif list_choices.index(u_ch) == -1:
-        print("Wrong input value!!")
+    try:
+        if b_ch == u_ch:
+            return 'Tie'
+        elif list_choices.index(u_ch) == -1:
+            print("Wrong input value!!")
+            exit()
+        elif (b_ch == 'rock' and u_ch == 'scissor') or (b_ch == 'paper' and u_ch == 'rock') or (b_ch == 'scissor' and u_ch == 'paper'):
+            return  'Bot'
+        else:
+            return 'User'
+    except ValueError:
+        print("Value not in list!!")
         exit()
-    elif (b_ch == 'rock' and u_ch == 'scissor') or (b_ch == 'paper' and u_ch == 'rock') or (b_ch == 'scissor' and u_ch == 'paper'):
-        return  'Bot'
-    else:
-        return 'User'
 
 def game_loop():
     while True:
